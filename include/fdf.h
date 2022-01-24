@@ -1,5 +1,6 @@
 #ifndef FDF_H
 # define FDF_H
+# include <math.h>
 # define WIDTH 1920
 # define HEIGHT 1080
 
@@ -16,14 +17,15 @@ typedef struct s_init
 {
 	void	*mlx;
 	void	*mlx_win;
+	t_data	img;
 }	t_init;
 
 typedef struct s_coord
 {
-	int	x_start;
-	int	y_start;
-	int	x_end;
-	int	y_end;
+	double	x1;
+	double	x2;
+	double	y1;
+	double	y2;
 }	t_coord;
 
 #endif
