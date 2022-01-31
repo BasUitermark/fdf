@@ -1,6 +1,11 @@
 #ifndef FDF_H
 # define FDF_H
 # include <math.h>
+# include <errno.h>
+# include <fcntl.h>
+# include "mlx_linux/mlx.h"
+# include "libft/include/libft.h"
+# include <stdio.h> //DELETE THIS
 # define WIDTH 1920
 # define HEIGHT 1080
 
@@ -27,5 +32,7 @@ typedef struct s_coord
 	double	y1;
 	double	y2;
 }	t_coord;
+
+char	*ft_parse(char *filepath);
 
 #endif
