@@ -89,6 +89,8 @@ void	draw_diagonal(t_coord line, t_init *init)
 	}
 }
 
+
+// Instead of seperate draw functions, make a function that checks from where the line is drawn and use that to increment.
 void	draw_line(t_coord line, t_init *init)
 {
 	double	m;
@@ -103,8 +105,7 @@ void	draw_line(t_coord line, t_init *init)
 	else if (line.y2 - line.y1 == 0)
 		draw_horizontal(line, &init);
 	else
-		draw_diagonal(line, &init);
-
+		draw_diagonal(line, init);
 }
 
 int	main(int argc, char const *argv[])
@@ -119,8 +120,8 @@ int	main(int argc, char const *argv[])
 	init.mlx = mlx_init();
 	init.mlx_win = mlx_new_window(init.mlx, WIDTH, HEIGHT, "TEST");
 	init.img.img = mlx_new_image(init.mlx, WIDTH, HEIGHT);
-	// init.img.addr = mlx_get_data_addr(init.img.img, &init.img.bits_per_pixel, \
-	// 			&init.img.line_length, &init.img.endian);
+	init.img.addr = mlx_get_data_addr(init.img.img, &init.img.bits_per_pixel, \
+				&init.img.line_length, &init.img.endian);
 	draw_line(line, &init);
-	// mlx_loop(init.mlx);
+	mlx_loop(init.mlx);
 }

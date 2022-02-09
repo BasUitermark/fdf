@@ -28,7 +28,7 @@ void	line_val(t_coord line, t_init *init)
 	{
 		y = m * x + c;
 		y = round(y);
-		ft_pixelput(&init->img, x, y, 0xFF0000);
+		ft_pixelput(&init->img, x, y, 0xFFFFFF);
 		x++;
 	}
 	mlx_put_image_to_window(init->mlx, init->mlx_win, init->img.img, 0, 0);
@@ -41,7 +41,7 @@ int	main(int argc, char const *argv[])
 
 	line.x1 = 100;
 	line.y1 = 100;
-	line.x2 = 110;
+	line.x2 = 200;
 	line.y2 = 550;
 	init.mlx = mlx_init();
 	init.mlx_win = mlx_new_window(init.mlx, WIDTH, HEIGHT, "TEST");
