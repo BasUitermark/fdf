@@ -3,8 +3,8 @@
 # include <math.h>
 # include <errno.h>
 # include <fcntl.h>
-# include "mlx_linux/mlx.h"
-# include "libft/include/libft.h"
+# include "../include/mlx/mlx.h"
+# include "../include/libft/include/libft.h"
 # include <stdio.h> //DELETE THIS
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -27,12 +27,8 @@ typedef struct s_init
 
 typedef struct s_coord
 {
-	double	x1;
-	double	x2;
-	double	y1;
-	double	y2;
+	int	x;
+	int	y;
 }	t_coord;
-
-char	*ft_parse(char *filepath);
 
 #endif

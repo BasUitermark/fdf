@@ -1,13 +1,14 @@
-#include "../include/fdf.h"
+#include "../fdf.h"
 
-char	*ft_convert(char *str)
-{
-	
-}
+// static char	*ft_convert(char *str)
+// {
 
-char	*ft_parse(char *filepath)
+// 	return ();
+// }
+
+char	*parse_map(char *filepath)
 {
-	int	fd;
+	int		fd;
 	char	*temp;
 	char	*out;
 
@@ -17,13 +18,12 @@ char	*ft_parse(char *filepath)
 	{
 		temp = ft_get_next_line(fd);
 		if (temp)
-		{
 			out = ft_strappend(out, temp);
-		}
 		else
 			break ;
 		free(temp);
 	}
 	close(fd);
-	return (ft_convert);
+	// return (ft_convert(out));
+	return (out);
 }

@@ -8,7 +8,8 @@ SRCS_DIRS	= $(addprefix $(DIR_SRCS)/, $(dir))
 OBJS_DIRS	= $(addprefix $(DIR_OBJS)/, $(dir))
 
 SRCS = $(addprefix src/, $(addsuffix .c, \
-		ft_draw_line \
+		draw/ft_draw_line \
+		draw/ft_pixelput \
 		ft_parse \
 		main))
 
@@ -34,3 +35,20 @@ $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
 	@printf "$(MAGENTA)Compiling: $(BLUE)$<\n$(RESET)"
 	@mkdir -p $(DIR_OBJS) $(OBJS_DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+#Remove object files
+clean:
+		@$(RM) $(OBJS)
+		@$(RM) -r $(DIR_OBJS)
+		@printf "\n$(RED)All objects removed!$(RESET)\n"
+
+#Remove object files and library file
+fclean: clean
+		@$(RM) $(NAME)
+		@printf "\n$(RED)Library $(NAME) removed!$(RESET)\n"
+
+#Remove object files, library file and remake library
+re:		fclean all
+
+#
+.PHONY: all, clean, fclean, re
