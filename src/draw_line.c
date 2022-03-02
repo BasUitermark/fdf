@@ -1,6 +1,15 @@
-#include "draw.h"
+#include "fdf.h"
 
-static int	ft_axis(int start, int end)
+static void	pixelput(t_data *data, t_coord coord, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (coord.y * data->line_length + coord.x * \
+		(data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+static int	axis(int start, int end)
 {
 	if (end < start)
 		return (1);
@@ -8,7 +17,7 @@ static int	ft_axis(int start, int end)
 		return (-1);
 }
 
-static void	ft_setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
+static void	setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
 {
 	diff->x = ft_abs(start.x - end.x);
 	diff->y = ft_abs(start.y - end.y);
@@ -16,19 +25,19 @@ static void	ft_setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
 	incr->y = ft_axis(start.y, end.y);
 }
 
-void	ft_draw_line(t_init *init, t_coord start, t_coord end)
+void	draw_line(t_init *init, t_coord start, t_coord end)
 {
 	t_coord	diff;
 	t_coord	incr;
 	t_coord	cur;
 	int		boundary_value;
 
-	ft_setup(start, end, &diff, &incr);
+	setup(start, end, &diff, &incr);
 	boundary_value = 2 * (diff.y - diff.x);
 	cur = end;
 	while (true)
 	{
-		ft_pixelput(&init->img, cur, 0xFFFFFF);
+		pixelput(&init->img, cur, 0xFFFFFF);
 		if (cur.x == start.x && cur.y == start.y)
 			break ;
 		if (boundary_value >= 0)
