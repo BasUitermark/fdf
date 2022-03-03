@@ -8,9 +8,11 @@ SRCS_DIRS	= $(addprefix $(DIR_SRCS)/, $(dir))
 OBJS_DIRS	= $(addprefix $(DIR_OBJS)/, $(dir))
 
 SRCS = $(addprefix src/, $(addsuffix .c, \
-		draw/ft_draw_line \
-		draw/ft_pixelput \
-		ft_parse \
+		draw_line \
+		parse_map \
+		intialize \
+		key_hooks \
+		error \
 		main))
 
 #Object destination for .c files
@@ -28,6 +30,11 @@ BLUE = \033[1;34m
 MAGENTA = \033[1;35m
 BOLD = \033[1m
 RESET = \033[0m
+
+#Include files
+FDF = src/
+MLX = include/mlx
+LIBFT = include/libft
 
 all: $(NAME)
 

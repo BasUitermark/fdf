@@ -3,13 +3,7 @@
 int	main(void)
 {
 	t_init	init;
-	t_coord	start;
-	t_coord	end;
 
-	start.x = 50;
-	start.y = 50;
-	end.x = 500;
-	end.y = 500;
 	init.mlx = mlx_init();
 	init.mlx_win = mlx_new_window(init.mlx, WIDTH, HEIGHT, "TEST");
 	init.img.img = mlx_new_image(init.mlx, WIDTH, HEIGHT);

@@ -27,20 +27,23 @@ static t_map	process(char *str_map, int depth_count)
 {
 	t_map	map;
 	int		i;
+	int		num;
 
 	i = 0;
+	num = -1;
 	map.map_depth = depth_count;
 	map.map_width = count_width(str_map);
 	map.map_points = (int *)ft_calloc(depth_count * map.map_width, sizeof(int));
-	if (!map.map_points)
-	{
-		free (str_map);
-		error("Malloc fail");
-	}
 	while (str_map[i])
 	{
-
+		if (ft_isdigit(str_map[i]))
+			map.map_points[++num] = ft_atoi(&str_map[i]);
+		while (!ft_isspace(str_map[i]))
+			i++;
+		while (ft_isspace(str_map[i]))
+			i++;
 	}
+	free (str_map);
 	return (map);
 }
 
