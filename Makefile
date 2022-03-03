@@ -43,6 +43,14 @@ $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
 	@mkdir -p $(DIR_OBJS) $(OBJS_DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+mlx:
+	@printf "$(MAGENTA)Compiling MLX\n$(RESET)"
+	@$(MAKE) -C $(MLX)
+
+libft: 
+	@printf "$(MAGENTA)Compiling LIBFT\n$(RESET)"
+	@$(MAKE) -C $(LIBFT)
+
 #Remove object files
 clean:
 		@$(RM) $(OBJS)
